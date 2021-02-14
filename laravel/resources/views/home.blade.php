@@ -14,9 +14,12 @@
                         </div>
                     @endif
 
-                    <form class="" action="index.html" method="post">
-                      <input type="text" name="" value="">
-                      <br>
+                    <form class="" action="{{route('send-mail')}}" method="post">
+                      @csrf
+                      @method('POST')
+
+                      <input type="text" name="text" value="">
+                      <br><br>
                       <input type="submit" name="" value="invia">
                     </form>
                 </div>

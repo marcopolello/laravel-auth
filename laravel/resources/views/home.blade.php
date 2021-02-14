@@ -21,8 +21,10 @@
 
                       <input name="icon" type="file" class="form-control border-0">
                       <br><br>
-                      <input type="submit" name="" value="invia">
+                      <input type="submit" class="btn btn-primary" value="Update img">
                     </form>
+                    <br>
+                    <a href="{{ route('delete-icon') }}" class="btn btn-danger">Delete Image</a>
                 </div>
             </div>
 
@@ -65,6 +67,23 @@
                     </form>
                 </div>
             </div>
+
+            @if (Auth::user() -> icon)
+              <br>
+
+              <div class="card">
+                  <div class="card-header">
+                    Icon
+                  </div>
+                  <div class="card-body">
+                    <h1>img dell'Utente</h1>
+                    <br>
+                    <img style="max-width: 260px;" src="{{  asset('storage/icon/' . Auth::user() -> icon) }}" alt="">
+                  </div>
+              </div>
+            @endif
+
+
         </div>
     </div>
 </div>

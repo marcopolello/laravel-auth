@@ -13,7 +13,7 @@ class TestMail extends Mailable
 
     public $text;
 
-    public function __construct($text)
+    public function __construct($text = null)
     {
       $this -> text = $text;
     }

@@ -23,6 +23,13 @@ class HomeController extends Controller
     return redirect() -> back();
   }
 
+  public function sendEmptyMail(Request $request){
+
+    Mail::to(Auth::user()->email)
+      -> send(new TestMail());
+    return redirect() -> back();
+  }
+
 
   public function index()
   {

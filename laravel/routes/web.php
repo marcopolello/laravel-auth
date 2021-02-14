@@ -31,5 +31,5 @@ Route::post('/send/empty/mail', 'HomeController@sendEmptyMail')
 Route::post('/update/icon', 'HomeController@updateIcon')
 ->name('update-icon');
 
-Route::get('/delete/icon', 'HomeController@deleteUserImg')
-->name('delete-icon');
+Route::get('/clear/icon', 'HomeController@clearUserImg')
+->name('clear-icon');

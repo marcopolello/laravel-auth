@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,7 @@ class HomeController extends Controller
     $request -> validate([
       'icon' => 'required|file'
     ]);
+    $this -> deleteUserImg(); //cancello img
     $image = $request -> file('icon');
 
     $ext = $image -> getClientOriginalExtension();
@@ -50,11 +52,26 @@ class HomeController extends Controller
     return redirect() -> back();
   }
 
-  public function deleteUserImg(){
+  public function clearUserImg(){
+    $this -> deleteUserImg();
+
     $user = Auth::user();
     $user -> icon = null;
     $user -> save();
     return redirect() -> back();
+  }
+
+  private function deleteUserImg(){
+    $user = Auth::user();
+    // se l'utente ha caricato un'icona altrimenti non fare nulla, altrimenmti si spacca;
+    try {
+      $fileName = $user -> icon;
+      $file = storage_path('app/public/icon/' . $fileName);
+      File::delete($file);
+    } catch (\Exception $e){
+
+    }
+
   }
 
   public function index()

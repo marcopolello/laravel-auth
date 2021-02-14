@@ -19,12 +19,13 @@
                       @csrf
                       @method('POST')
 
+                      <label for="icon">Do an Image Upload for your account:</label>
                       <input name="icon" type="file" class="form-control border-0">
                       <br><br>
                       <input type="submit" class="btn btn-primary" value="Update img">
                     </form>
                     <br>
-                    <a href="{{ route('delete-icon') }}" class="btn btn-danger">Delete Image</a>
+                    <a href="{{ route('clear-icon') }}" class="btn btn-danger">Clear Image</a>
                 </div>
             </div>
 
@@ -76,7 +77,7 @@
                     Icon
                   </div>
                   <div class="card-body">
-                    <h1>img dell'Utente</h1>
+                    <h1>img dell'Utente Loggato</h1>
                     <br>
                     <img style="max-width: 260px;" src="{{  asset('storage/icon/' . Auth::user() -> icon) }}" alt="">
                   </div>

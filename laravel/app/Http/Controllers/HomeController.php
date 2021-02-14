@@ -30,6 +30,20 @@ class HomeController extends Controller
     return redirect() -> back();
   }
 
+  public function updateIcon(Request $request){
+    $request -> validate([
+      'icon' => 'required|file'
+    ]);
+    $image = $request -> file('icon');
+
+    $ext = $image -> getClientOriginalExtension();
+    $name = rand(1000000, 9999999) . '_' . time();
+    $destfile = $name . '.' . $ext;
+
+    $file = $image -> storeAs('icon', $destfile, 'public');
+
+    dd($image,$ext,$name, $destfile);
+  }
 
   public function index()
   {

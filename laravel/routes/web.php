@@ -27,3 +27,6 @@ Route::post('/send/mail', 'HomeController@sendMail')
 
 Route::post('/send/empty/mail', 'HomeController@sendEmptyMail')
 ->name('send-empty-mail');
+
+Route::post('/update/icon', 'HomeController@updateIcon')
+->name('update-icon');
